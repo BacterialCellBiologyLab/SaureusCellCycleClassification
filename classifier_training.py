@@ -70,7 +70,7 @@ class ModelTrainer(object):
                            optimizer='adam',
                            metrics=['accuracy'])
 
-    def train_model(self, val_split=0.3, n_epochs=300, n_batch_size=1000):
+    def train_model(self, val_split=0.3, n_epochs=100, n_batch_size=1000):
         tbCallBack = TensorBoard(log_dir="./Graph", histogram_freq=0,
                                  write_graph=True, write_images=True)
         self.model.fit(self.X, self.y, validation_split=val_split,
