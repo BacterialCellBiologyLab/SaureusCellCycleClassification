@@ -10,9 +10,9 @@ from tkinter.filedialog import askdirectory, askopenfilename
 
 class Classifier(object):
     def __init__(self):
-        self.model = load_model("model")
         self.data = None
         self.predictions = None
+        self.model = None
 
     def load_model(self, model_path=None):
 
@@ -37,22 +37,9 @@ class Classifier(object):
 
         self.data = np.array(list(self.data)).reshape(-1, 100, 200, 1)
 
-    def classify_data(self, true_class=0):
+    def classify_data(self):
 
-        total = 0
-        misclassified = 0
-
-        pred = self.model.predict_classes(self.data)
-
-        for classification in pred:
-            total += 1
-            if classification+1 != true_class:
-                misclassified += 1
-
-
-        print(float(misclassified)*100.0/float(total))
-
-        return pred
+        return self.model.predict_classes(self.data)
 
     def classify_data_prob(self):
 
