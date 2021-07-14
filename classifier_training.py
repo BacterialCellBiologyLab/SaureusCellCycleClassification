@@ -80,6 +80,7 @@ class ModelTrainer(object):
                                                 self.model.add(Activation('relu'))
         if depth <= 10:
             self.model.add(Flatten())
+            pass
 
         self.model.add(Dense(3))
         self.model.add(Activation('softmax'))
